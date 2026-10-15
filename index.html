@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#193e44">
+  <meta name="description" content="知航题库：100道事业单位自主招聘原创强化单选题。点选即判，附参考答案、解析与官方资料链接；支持错题、收藏和手机练习。">
+  <meta name="color-scheme" content="light">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>知航题库 · 事业单位单选练习</title>
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./icon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="site-header"><div class="header-inner">
+    <button class="brand" data-action="home" aria-label="知航题库首页"><span class="brand-icon" aria-hidden="true">知</span><span>知航题库<small>每天一练，稳步向前</small></span></button>
+    <span class="header-note">事业单位自主招聘 · 原创练习</span>
+    <button class="button quiet" data-action="share">分享题库 <span aria-hidden="true">↗</span></button>
+  </div></header>
+  <div id="storage-warning" class="storage-warning" hidden>当前浏览器不允许保存数据。你仍可答题，但关闭页面后本次记录可能丢失。</div>
+  <main id="main" tabindex="-1"><div class="loading"><span class="loading-dot"></span>正在打开题库…</div></main>
+  <nav class="bottom-nav" aria-label="主要导航">
+    <button data-view="home"><span aria-hidden="true">⌂</span>学习台</button>
+    <button data-view="library"><span aria-hidden="true">▤</span>题库</button>
+    <button data-view="wrong"><span aria-hidden="true">↺</span>错题本</button>
+    <button data-view="favorites"><span aria-hidden="true">☆</span>收藏</button>
+  </nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="feedback-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="confirm-dialog"><form method="dialog"><h2 id="dialog-title"></h2><p id="dialog-text"></p><div class="dialog-actions"><button class="button quiet" value="cancel">取消</button><button class="button primary" value="confirm">确定</button></div></form></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
