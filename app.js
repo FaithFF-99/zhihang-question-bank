@@ -90,6 +90,18 @@ document.addEventListener('click',async event=>{
  case 'share-question':await share(true);break;
  }
 });
+// Keep native Space behavior on controls; the feedback banner receives focus after grading.
+document.addEventListener('keydown',event=>{
+ if((event.code!=='Space'&&event.key!==' ')||event.defaultPrevented||event.isComposing||event.ctrlKey||event.altKey||event.metaKey||event.shiftKey)return;
+ if(!bank||view!=='practice'||!state.session||confirmBusy||document.querySelector('dialog[open]'))return;
+ if(event.target?.closest?.('input,textarea,select,button,a,summary,[contenteditable]:not([contenteditable="false"]),[role="textbox"],[role="combobox"],[role="button"]'))return;
+ const s=state.session,q=currentQuestion();
+ if(!Object.hasOwn(s.answers,q.id))return;
+ event.preventDefault();
+ if(event.repeat)return;
+ if(!s.finished&&s.mode==='timed'&&s.deadline<=Date.now()){tick();return;}
+ main.querySelector('.question-controls [data-action="next"],.question-controls [data-action="finish"],.question-controls [data-action="results"]')?.click();
+});
 document.addEventListener('input',event=>{if(event.target.id==='question-search'){listQuery=event.target.value;listPage=0;const caret=event.target.selectionStart;render(false);const el=document.querySelector('#question-search');el.focus({preventScroll:true});try{el.setSelectionRange(caret,caret);}catch{}}});
 document.addEventListener('change',event=>{if(event.target.id==='category-filter')listCategory=Number(event.target.value);else if(event.target.id==='collection-filter')listCollection=event.target.value;else if(event.target.id==='mode-filter')listMode=event.target.value;else return;listPage=0;render(false);});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});window.addEventListener('pageshow',()=>tick());
